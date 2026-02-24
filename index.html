@@ -1,69 +1,652 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glass Buttons</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B-EPIC Shop</title>
 
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(135deg,#dfe9f3,#ffffff);
-    font-family: Arial, sans-serif;
+  <style>
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #F7E7CE;  /* Krem fon */
+  color: #102C26;        /* Chuqur yashil text */
+}  
+
+ .header {
+  position: relative;
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(180deg, #102C26, #102C26);
+  border-bottom: 1px solid #102C26;
+}   
+
+.header h1 {
+  color: #F7E7CE;
+  font-size: 32px;
+  letter-spacing: 2px;
 }
 
-.container{
-    width:400px;
-    padding:30px;
-    border-radius:25px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    gap:20px;
+.header p {
+  color: #F7E7CE;
 }
 
-.btn{
-    padding:15px;
-    border:none;
-    border-radius:15px;
-    font-size:16px;
-    color:white;
-    cursor:pointer;
-    transition:0.3s;
-    backdrop-filter: blur(10px);
+    .top-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .products {
+      padding: 15px;
+    }
+
+  .product {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #F7E7CE;
+  border: 1px solid #F7E7CE;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: 0.3s;
 }
 
-.btn1{ background: linear-gradient(135deg,#7f5af0,#6246ea);}
-.btn2{ background: linear-gradient(135deg,#2cb67d,#1abc9c);}
-.btn3{ background: linear-gradient(135deg,#ff8906,#f25f4c);}
-.btn4{ background: linear-gradient(135deg,#00c6ff,#0072ff);}
-.btn5{ background: linear-gradient(135deg,#ff4ecd,#a020f0);}
-.btn6{ background: linear-gradient(135deg,#43e97b,#38f9d7);}
-
-.btn:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.3);
 }
 
-</style>
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.product * {
+  position: relative;
+  z-index: 2;
+}
+
+.fuel {
+  background: url("photo_2026-02-06_19-38-53.jpg") center/cover no-repeat;
+}
+
+.elev8 {
+  background: url("photo_2026-02-13_15-59-42.jpg") center/cover no-repeat;
+}
+
+.bcardio {
+  background: url("photo_2026-02-13_15-59-34.jpg") center/cover no-repeat;
+}
+
+.sleep {
+  background: url("photo_2026-02-13_15-59-47.jpg") center/cover no-repeat;
+}
+
+.restore {
+  background: url("photo_2026-02-13_15-59-47.jpg") center/cover no-repeat;
+}
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0;
+    }
+
+    .quantity button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #F7E7CE;
+  background: #102C26;
+  color: #F7E7CE;
+  font-size: 20px;
+  cursor: pointer;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+.top-buttons a,
+.buy {
+  display: block;
+  text-align: center;
+  background: #102C26;
+  border: 1px solid #F7E7CE;
+  color: #F7E7CE;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}    
+
+.top-buttons a:hover,
+.buy:hover {
+  background: #F7E7CE;
+  color: #102C26;
+}
+
+.top-buttons a:active,
+.buy:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 2px 0 #102C26,
+    0 4px 8px rgba(16,44,38,0.3);
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #F7E7CE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 1.3s ease forwards;
+  animation-delay: 3s;
+}
+
+#loader img {
+  width: 200px;
+  animation: zoomIn 1.5s ease;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+} 
+
+    #introScreen {
+  position: fixed;
+  inset: 0;
+  background: url("photo_2026-02-17_19-21-19.jpg") center/cover no-repeat;
+  display: none; /* boshida ko‘rinmaydi */
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+#introScreen h1 {
+  color: white;
+  font-size: 32px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+#introScreen.show {
+  display: flex;
+}
+
+#introScreen.hide {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+    /* HEADER ichida turishi uchun */
+.header {
+  position: relative;
+}
+
+/* KNOPKA qimirlamaydi */
+#bonusBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(145deg, #F7E7CE, #F7E7CE);
+  color: #102C26;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16,44,38,0.4);
+}
+
+/* MODAL */
+#bonusModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(16,44,38,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.bonus-content {
+  background: #F7E7CE;
+  padding: 20px;
+  border-radius: 18px;
+  width: 95%;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #102C26;
+  box-shadow: 0 10px 40px rgba(16,44,38,0.7);
+  color: #102C26;
+}
+
+.closeBonus {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 20px;
+  color: #102C26;
+  font-weight: bold;
+}
+
+/* Scroll pastga tushishi uchun */
+.table-wrapper {
+  overflow-y: auto;
+  margin-top: 10px;
+  flex: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  color: #102C26;
+}
+
+th {
+  background: #102C26;
+  color: #F7E7CE;
+  padding: 10px;
+  border: none;
+}
+    
+    tbody tr:nth-child(1) td {
+  background: linear-gradient(90deg,#102C26,#1b4d42);
+  color: #F7E7CE;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(2) td {
+  background: #e8f0ee;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(3) td {
+  background: #f3f7f6;
+  font-weight: bold;
+}
+
+.openBrowser {
+  background: #F7E7CE;
+  border: 1px solid #102C26;
+  color: #102C26;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-size: 14px;
+}    
+
+.openBrowser strong {
+  color: #102C26;
+  font-weight: bold;
+}
+    
+tbody tr:hover {
+  background: #f3f3f3;
+}  
+.quantity button:hover {
+  background: #F7E7CE;
+  color: #102C26;
+}
+
+.quantity button:active {
+  transform: scale(0.9);
+}
+.product h2,
+.product p,
+.product div {
+  color: #F7E7CE !important;
+}
+    
+  </style>
 </head>
-
 <body>
 
-<div class="container">
-    <button class="btn btn1">Primary</button>
-    <button class="btn btn2">Secondary</button>
-    <button class="btn btn3">Warning</button>
-    <button class="btn btn4">Info</button>
-    <button class="btn btn5">Premium</button>
-    <button class="btn btn6">Success</button>
+<div id="loader">
+  <img src="photo_2026-02-13_18-18-27.jpg" alt="B-EPIC Logo">
 </div>
+
+  <!-- INTRO IMAGE SCREEN -->
+<div id="introScreen">
+</div>
+
+<audio id="introAudio" src="Импортировано.m4a"></audio>
+
+<header class="header">
+  <h1>B-EPIC Shop</h1>
+  <p>Қазақстан бойынша сапалы өнімдер</p>
+
+  <!-- BONUS BUTTON -->
+<div id="bonusBtn">⭐ Бонус</div>
+
+  <!-- BONUS MODAL -->
+<div id="bonusModal">
+  <div class="bonus-content">
+    <span class="closeBonus">✖</span>
+    <h2>Бонус тізімі</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Аты</th>
+            <th>Сатылым</th>
+            <th>Балл</th>
+          </tr>
+        </thead>
+        <tbody id="bonusTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="openBrowser" 
+class="openBrowser"
+Егер WhatsApp ашылмаса, оң жақ жоғарыдағы үш нүктені ... басып, 
+<strong>"Браузерде ашу"</strong> таңдаңыз.
+</div>
+  
+  <div class="top-buttons">
+    <a href="https://www.tiktok.com/@bepic_team_" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" 
+     style="width:26px; vertical-align:middle; margin-right:8px;">
+TikTok B-EPIC
+    </a>
+
+     <a href="https://wa.me/77752709238" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+         style="width:26px; vertical-align:middle; margin-right:8px;">
+    WhatsApp
+  </a>
+    
+    <a href="https://www.tiktok.com/@beco_team_" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" 
+     style="width:26px; vertical-align:middle; margin-right:8px;">
+TikTok B-EPIC
+    </a>
+    <a href="tel:+77752709238">📞 Қоңырау шалу</a>
+  </div>
+</header>
+
+<section class="products">
+
+  <div class="product fuel" data-name="Fuel Tabs" data-price="11000">
+    <h2>Fuel Tabs</h2>
+    <p>Жанармай тиімділігін арттырады</p>
+    <div>1 дана: 11000 ₸</div>
+    <div class="quantity">
+      <button class="minus">−</button>
+      <span class="count">1</span>
+      <button class="plus">+</button>
+    </div>
+    <div class="total">Жалпы: <span class="total-price">11000</span> ₸</div>
+    <button class="buy">Сатып алу 🛒</button>
+  </div>
+
+  <div class="product elev8" data-name="Elev8" data-price="30000">
+    <h2>Elev8</h2>
+    <p>Энергия мен сергектік береді</p>
+    <div>1 дана: 30000 ₸</div>
+    <div class="quantity">
+      <button class="minus">−</button>
+      <span class="count">1</span>
+      <button class="plus">+</button>
+    </div>
+    <div class="total">Жалпы: <span class="total-price">30000</span> ₸</div>
+    <button class="buy">Сатып алу 🛒</button>
+  </div>
+
+  <div class="product bcardio" data-name="BCARDIO" data-price="38000">
+    <h2>BCARDIO</h2>
+    <p>Жүрек-қан тамырларын қолдайды</p>
+    <div>1 дана: 38000 ₸</div>
+    <div class="quantity">
+      <button class="minus">−</button>
+      <span class="count">1</span>
+      <button class="plus">+</button>
+    </div>
+    <div class="total">Жалпы: <span class="total-price">38000</span> ₸</div>
+    <button class="buy">Сатып алу 🛒</button>
+  </div>
+
+  <div class="product sleep" data-name="Acceler8 Sleep" data-price="22500">
+    <h2>Acceler8 Sleep</h2>
+    <p>Ұйқы сапасын жақсартады</p>
+    <div>1 дана: 22500 ₸</div>
+    <div class="quantity">
+      <button class="minus">−</button>
+      <span class="count">1</span>
+      <button class="plus">+</button>
+    </div>
+    <div class="total">Жалпы: <span class="total-price">22500</span> ₸</div>
+    <button class="buy">Сатып алу 🛒</button>
+  </div>
+
+  <div class="product restore" data-name="Acceler8 Restore" data-price="22500">
+    <h2>Acceler8 Restore</h2>
+    <p>Қалпына келуді тездетеді</p>
+    <div>1 дана: 22500 ₸</div>
+    <div class="quantity">
+      <button class="minus">−</button>
+      <span class="count">1</span>
+      <button class="plus">+</button>
+    </div>
+    <div class="total">Жалпы: <span class="total-price">22500</span> ₸</div>
+    <button class="buy">Сатып алу 🛒</button>
+  </div>
+  
+</section>
+  
+  © 2026 — <b>Bahrom Furkatov</b>, 
+         Негізін қалаушы
+</footer>
+  
+<script>
+
+// ================= PRODUCT CODE =================
+document.querySelectorAll(".product").forEach(product => {
+
+  const price = parseInt(product.dataset.price);
+  const name = product.dataset.name;
+
+  const minus = product.querySelector(".minus");
+  const plus = product.querySelector(".plus");
+  const countEl = product.querySelector(".count");
+  const totalEl = product.querySelector(".total-price");
+  const buyBtn = product.querySelector(".buy");
+
+  let count = 1;
+
+  plus.onclick = () => {
+    count++;
+    countEl.textContent = count;
+    totalEl.textContent = count * price;
+  };
+
+  minus.onclick = () => {
+    if (count > 1) {
+      count--;
+      countEl.textContent = count;
+      totalEl.textContent = count * price;
+    }
+  };
+
+  buyBtn.onclick = () => {
+    const total = count * price;
+
+    const message = `Сәлеметсіз бе! Мен ${name} өнімінен ${count} дана алғым келеді. Жалпы баға: ${total} ₸`;
+
+    const phoneNumber = "77752709238";
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  };
+
+});
+
+// ================= TIKTOK CHECK =================
+if (navigator.userAgent.includes("TikTok")) {
+  alert("WhatsApp ашу үшін сайтты браузерде ашыңыз.");
+}
+
+// ================= INTRO CODE =================
+const loader = document.getElementById("loader");
+const introScreen = document.getElementById("introScreen");
+const audio = document.getElementById("introAudio");
+
+let played = false;
+
+setTimeout(() => {
+  introScreen.classList.add("show");
+}, 3000);
+
+introScreen.addEventListener("click", () => {
+
+  if (played) return;
+  played = true;
+
+  audio.volume = 0;
+  audio.play();
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 0.5) {
+      vol += 0.05;
+      audio.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+ 
+  introScreen.classList.add("hide");
+
+});
+
+  // BONUS ELEMENTS
+const bonusBtn = document.getElementById("bonusBtn");
+const bonusModal = document.getElementById("bonusModal");
+const closeBonus = document.querySelector(".closeBonus");
+const bonusTable = document.getElementById("bonusTable");
+
+// 30 TA Odam tayyor
+let customers = [
+  { name: "Ali", orders: 2 },
+  { name: "Madina", orders: 1 },
+  { name: "Ruslan", orders: 3 },
+  { name: "Aziza", orders: 4 },
+  { name: "Bekzat", orders: 2 },
+  { name: "Nurlan", orders: 5 },
+  { name: "Dias", orders: 1 },
+  { name: "Aruzhan", orders: 2 },
+  { name: "Samat", orders: 3 },
+  { name: "Aigerim", orders: 4 },
+  { name: "Ernar", orders: 2 },
+  { name: "Dana", orders: 1 },
+  { name: "Marat", orders: 6 },
+  { name: "Zarina", orders: 2 },
+  { name: "Timur", orders: 3 },
+  { name: "Ayan", orders: 1 },
+  { name: "Altynay", orders: 2 },
+  { name: "Arman", orders: 4 },
+  { name: "Kamila", orders: 3 },
+  { name: "Askar", orders: 2 },
+  { name: "Sanzhar", orders: 1 },
+  { name: "Madi", orders: 5 },
+  { name: "Aruz", orders: 2 },
+  { name: "Elmira", orders: 3 },
+  { name: "Rinat", orders: 4 },
+  { name: "Gulnaz", orders: 1 },
+  { name: "Adil", orders: 2 },
+  { name: "Zhanna", orders: 3 },
+  { name: "Kairat", orders: 2 },
+  { name: "Saltanat", orders: 4 }
+];
+
+function renderTable() {
+  bonusTable.innerHTML = "";
+
+  // 1️⃣ Zakaz bo‘yicha kamayish tartibida sort
+  let sortedCustomers = [...customers].sort((a, b) => b.orders - a.orders);
+
+  sortedCustomers.forEach((customer, index) => {
+    let points = customer.orders * 25;
+
+    bonusTable.innerHTML += `
+      <tr>
+        <td><b>${index + 1}</b></td>
+        <td>${customer.name}</td>
+        <td>${customer.orders}</td>
+        <td>${points}</td>
+      </tr>
+    `;
+  });
+
+  // Pastga tushib ko‘rish uchun
+  bonusTable.parentElement.scrollTop = bonusTable.parentElement.scrollHeight;
+}
+
+bonusBtn.onclick = () => {
+  bonusModal.style.display = "flex";
+  renderTable();
+};
+
+closeBonus.onclick = () => {
+  bonusModal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if (e.target === bonusModal) {
+    bonusModal.style.display = "none";
+  }
+};
+
+</script>
 
 </body>
 </html>
