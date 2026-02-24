@@ -343,13 +343,126 @@ tbody tr:hover {
 .product div {
   color: #F7E7CE !important;
 }
+
+.apple-intro {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.item {
+  position: absolute;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.left1 { width: 150px; }
+.left2 { width: 155px; }
+.right1 { width: 155px; }
+.right2 { width: 175px; }
+.top1 { width: 165px; }
+.bottom1 { width: 165px; }
+.center { width: 190px; }    
+
+/* ===== ANIMATSIYALAR ===== */
+
+@keyframes slideTop {
+  from { transform: translateY(-250px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideBottom {
+  from { transform: translateY(250px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-250px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(250px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomCenter {
+  from { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* ===== 1 TA TEPADAN ===== */
+
+.top1 {
+  top: 0%;
+  left: 40%;
+  animation: slideTop 2s ease forwards;
+}
+
+/* ===== 1 TA PASTDAN ===== */
+
+.bottom1 {
+  bottom: 0%;
+  left: 30%;
+  animation: slideBottom 1.2s ease forwards;
+}
+
+/* ===== 2 TA CHAPDAN ===== */
+
+.left1 {
+  left: 0%;
+  top: 7%;
+  animation: slideLeft 1.2s ease forwards;
+}
+
+.left2 {
+  left: 0%;
+  bottom: 10%;
+  animation: slideLeft 1.2s ease forwards;
+}
+
+/* ===== 2 TA O‘NGDAN ===== */
+
+.right1 {
+  right: 0%;
+  top: 17%;
+  animation: slideRight 1.2s ease forwards;
+}
+
+.right2 {
+  right: 0%;
+  bottom: 4%;
+  animation: slideRight 1.2s ease forwards;
+}
+
+/* ===== MARKAZDAN CHIQADIGAN LOGO ===== */
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  animation: zoomCenter 1.4s ease forwards;
+}
     
   </style>
 </head>
 <body>
 
-<div id="loader">
-  <img src="photo_2026-02-13_18-18-27.jpg" alt="B-EPIC Logo">
+<div class="apple-intro">
+  <img src="photo_2026-02-23_15-41-55.jpg" class="item top1">
+
+<img src="photo_2026-02-23_15-43-23.jpg" class="item left1">
+  <img src="photo_2026-02-23_17-41-33.jpg" class="item left2">
+
+  <img src="photo_2026-02-23_15-48-19.jpg" class="item right1">
+  <img src="photo_2026-02-23_15-24-19.jpg" class="item right2">
+
+  <img src="photo_2026-02-23_18-18-14.jpg" class="item bottom1">
+
+  <img src="photo_2026-02-13_18-18-27.jpg" class="item center">
 </div>
 
   <!-- INTRO IMAGE SCREEN -->
@@ -645,6 +758,20 @@ window.onclick = (e) => {
     bonusModal.style.display = "none";
   }
 };
+
+setTimeout(() => {
+  document.querySelector(".apple-intro").style.display = "none";
+}, 7000);  
+
+const clickSound = document.getElementById("clickSound");
+clickSound.volume = 0.2;
+
+document.querySelectorAll("button, a, #bonusBtn").forEach(element => {
+  element.addEventListener("click", () => {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+  });
+});  
 
 </script>
 
