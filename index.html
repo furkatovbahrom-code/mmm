@@ -7,7 +7,10 @@
 
   <style>
   body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffffff;   /* OQ FON */
+  color: #102C26;
 }
     
  .header {
@@ -112,80 +115,58 @@
       margin-top: 5px;
     }
 
-/* ===== LIQUID GLASS BUTTON ===== */
+/* ===== WHITE LIQUID GLASS ===== */
 
-.top-buttons {
-  margin-top: 25px;
-  padding: 0 20px;
-}
+.top-buttons a,
+.buy,
+#bonusBtn,
+.quantity button {
 
-.top-buttons a {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
 
-  padding: 18px;
-  border-radius: 22px;
+  padding: 16px 20px;
+  border-radius: 25px;
 
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  color: #111;
 
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  color: #102C26;
 
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.45); /* SHaffof oq */
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.8);
 
   box-shadow:
-    0 8px 30px rgba(0,0,0,0.2),
-    inset 0 2px 6px rgba(255,255,255,0.6),
-    inset 0 -2px 6px rgba(0,0,0,0.1);
+    0 8px 25px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
 
-  transition: all 0.35s ease;
-}
-
-/* Yaltirash effekti */
-.top-buttons a::before {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  top: 0;
-  left: -70%;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0.2),
-    rgba(255,255,255,0.7),
-    rgba(255,255,255,0.2)
-  );
-  transform: skewX(-20deg);
+  transition: all 0.3s ease;
 }
 
 /* Hover */
-.top-buttons a:hover {
-  transform: translateY(-4px);
+.top-buttons a:hover,
+.buy:hover,
+#bonusBtn:hover,
+.quantity button:hover {
+  transform: translateY(-3px);
   box-shadow:
-    0 15px 40px rgba(0,0,0,0.25),
-    inset 0 3px 8px rgba(255,255,255,0.8);
+    0 15px 35px rgba(0,0,0,0.12),
+    inset 0 3px 8px rgba(255,255,255,1);
 }
 
-.top-buttons a:hover::before {
-  animation: shine 1s forwards;
-}
-
-/* Bosilganda */
-.top-buttons a:active {
+/* Click */
+.top-buttons a:active,
+.buy:active,
+#bonusBtn:active,
+.quantity button:active {
   transform: scale(0.96);
-}
-
-/* Shine animatsiya */
-@keyframes shine {
-  100% {
-    left: 130%;
-  }
 }
     
 #loader {
