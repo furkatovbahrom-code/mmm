@@ -115,34 +115,82 @@
       margin-top: 5px;
     }
 
-.top-buttons a,
-.buy {
-  display: block;
-  text-align: center;
-  background: #102C26;
-  border: 1px solid #F7E7CE;
-  color: #F7E7CE;
-  padding: 12px;
-  border-radius: 14px;
-  font-weight: bold;
+/* ===== LIQUID GLASS BUTTON ===== */
+
+.top-buttons {
+  margin-top: 25px;
+  padding: 0 20px;
+}
+
+.top-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 18px;
+  border-radius: 22px;
+
+  font-size: 17px;
+  font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
-}    
+  color: #111;
 
-.top-buttons a:hover,
-.buy:hover {
-  background: #F7E7CE;
-  color: #102C26;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.2),
+    inset 0 2px 6px rgba(255,255,255,0.6),
+    inset 0 -2px 6px rgba(0,0,0,0.1);
+
+  transition: all 0.35s ease;
 }
 
-.top-buttons a:active,
-.buy:active {
-  transform: translateY(4px);
-  box-shadow: 
-    0 2px 0 #102C26,
-    0 4px 8px rgba(16,44,38,0.3);
+/* Yaltirash effekti */
+.top-buttons a::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: -70%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.7),
+    rgba(255,255,255,0.2)
+  );
+  transform: skewX(-20deg);
 }
 
+/* Hover */
+.top-buttons a:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25),
+    inset 0 3px 8px rgba(255,255,255,0.8);
+}
+
+.top-buttons a:hover::before {
+  animation: shine 1s forwards;
+}
+
+/* Bosilganda */
+.top-buttons a:active {
+  transform: scale(0.96);
+}
+
+/* Shine animatsiya */
+@keyframes shine {
+  100% {
+    left: 130%;
+  }
+}
+    
 #loader {
   position: fixed;
   inset: 0;
