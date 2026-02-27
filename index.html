@@ -1,149 +1,238 @@
 <!DOCTYPE html>
 <html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B-EPIC Shop</title>
 
-body {
+  <style>
+  body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #eef1f5, #dfe5ec);
-  min-height: 100vh;
-  color: #111;
-  overflow-x: hidden;
-}
+  font-family: 'Segoe UI', sans-serif;
+  background: #F7E7CE;  /* Krem fon */
+  color: #102C26;        /* Chuqur yashil text */
+}  
 
-/* ================= HEADER ================= */
-
-.header {
+ .header {
+  position: relative;
   text-align: center;
-  padding: 40px 20px;
-}
+  padding: 25px;
+  background: linear-gradient(180deg, #102C26, #102C26);
+  border-bottom: 1px solid #102C26;
+}   
 
 .header h1 {
+  color: #F7E7CE;
   font-size: 32px;
-  font-weight: 600;
-  margin: 0;
+  letter-spacing: 2px;
 }
 
 .header p {
-  opacity: 0.6;
-  margin-top: 10px;
+  color: #F7E7CE;
 }
 
-/* ================= GLASS BUTTON ================= */
+    .top-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
 
-button,
-.top-buttons a,
-#bonusBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+    .products {
+      padding: 15px;
+    }
 
-  padding: 14px 22px;
-  border-radius: 30px;
-
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #111;
-
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-
-  background: rgba(255,255,255,0.35);
-  border: 1px solid rgba(255,255,255,0.7);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.08),
-    inset 0 2px 6px rgba(255,255,255,0.9);
-
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-
-button:hover,
-.top-buttons a:hover,
-#bonusBtn:hover {
-  transform: translateY(-4px);
-}
-
-button:active,
-.top-buttons a:active,
-#bonusBtn:active {
-  transform: scale(0.95);
-}
-
-/* ================= TOP LINKS ================= */
-
-.top-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 25px;
-  padding: 0 20px;
-}
-
-/* ================= PRODUCTS ================= */
-
-.products {
-  padding: 30px 20px;
-}
-
-/* ================= GLASS CARD ================= */
-
-.product {
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-
-  background: rgba(255,255,255,0.35);
-  border: 1px solid rgba(255,255,255,0.6);
-
-  border-radius: 28px;
-  padding: 28px;
-  margin-bottom: 30px;
-
-  box-shadow:
-    0 15px 50px rgba(0,0,0,0.08),
-    inset 0 2px 8px rgba(255,255,255,1);
-
-  transition: 0.4s ease;
+  .product {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #F7E7CE;
+  border: 1px solid #F7E7CE;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: 0.3s;
 }
 
 .product:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.3);
 }
 
-/* ================= PRODUCT TEXT ================= */
-
-.product h2 {
-  margin: 0 0 10px;
-  font-weight: 600;
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-.product p {
-  opacity: 0.6;
+.product * {
+  position: relative;
+  z-index: 2;
 }
 
-/* ================= QUANTITY ================= */
+.fuel {
+  background: url("photo_2026-02-06_19-38-53.jpg") center/cover no-repeat;
+}
 
-.quantity {
+.elev8 {
+  background: url("photo_2026-02-13_15-59-42.jpg") center/cover no-repeat;
+}
+
+.bcardio {
+  background: url("photo_2026-02-13_15-59-34.jpg") center/cover no-repeat;
+}
+
+.sleep {
+  background: url("photo_2026-02-13_15-59-47.jpg") center/cover no-repeat;
+}
+
+.restore {
+  background: url("photo_2026-02-13_15-59-47.jpg") center/cover no-repeat;
+}
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0;
+    }
+
+    .quantity button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #F7E7CE;
+  background: #102C26;
+  color: #F7E7CE;
+  font-size: 20px;
+  cursor: pointer;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+.top-buttons a,
+.buy {
+  display: block;
+  text-align: center;
+  background: #102C26;
+  border: 1px solid #F7E7CE;
+  color: #F7E7CE;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}    
+
+.top-buttons a:hover,
+.buy:hover {
+  background: #F7E7CE;
+  color: #102C26;
+}
+
+.top-buttons a:active,
+.buy:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 2px 0 #102C26,
+    0 4px 8px rgba(16,44,38,0.3);
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #F7E7CE;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
-  margin: 18px 0;
+  z-index: 9999;
+  animation: fadeOut 1.3s ease forwards;
+  animation-delay: 3s;
 }
 
-.count {
-  font-weight: 600;
-  font-size: 18px;
+#loader img {
+  width: 200px;
+  animation: zoomIn 1.5s ease;
 }
 
-/* ================= BONUS MODAL ================= */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+} 
+
+    #introScreen {
+  position: fixed;
+  inset: 0;
+  background: url("photo_2026-02-17_19-21-19.jpg") center/cover no-repeat;
+  display: none; /* boshida ko‘rinmaydi */
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+#introScreen h1 {
+  color: white;
+  font-size: 32px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+#introScreen.show {
+  display: flex;
+}
+
+#introScreen.hide {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+    /* HEADER ichida turishi uchun */
+.header {
+  position: relative;
+}
+
+/* KNOPKA qimirlamaydi */
+#bonusBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(145deg, #F7E7CE, #F7E7CE);
+  color: #102C26;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16,44,38,0.4);
+}
+
+/* MODAL */
 #bonusModal {
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.4);
-  backdrop-filter: blur(25px);
+  background: rgba(16,44,38,0.65);
   display: none;
   justify-content: center;
   align-items: center;
@@ -151,52 +240,213 @@ button:active,
 }
 
 .bonus-content {
-  backdrop-filter: blur(35px);
-  background: rgba(255,255,255,0.45);
-  border: 1px solid rgba(255,255,255,0.7);
-  border-radius: 28px;
-  padding: 30px;
-  width: 90%;
+  background: #F7E7CE;
+  padding: 20px;
+  border-radius: 18px;
+  width: 95%;
   max-width: 500px;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.1),
-    inset 0 2px 8px rgba(255,255,255,1);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #102C26;
+  box-shadow: 0 10px 40px rgba(16,44,38,0.7);
+  color: #102C26;
 }
 
-/* ================= TABLE ================= */
+.closeBonus {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 20px;
+  color: #102C26;
+  font-weight: bold;
+}
+
+/* Scroll pastga tushishi uchun */
+.table-wrapper {
+  overflow-y: auto;
+  margin-top: 10px;
+  flex: 1;
+}
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 th, td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+td {
   padding: 10px;
   text-align: center;
-  font-size: 14px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+  color: #102C26;
 }
 
 th {
-  font-weight: 600;
+  background: #102C26;
+  color: #F7E7CE;
+  padding: 10px;
+  border: none;
+}
+    
+    tbody tr:nth-child(1) td {
+  background: linear-gradient(90deg,#102C26,#1b4d42);
+  color: #F7E7CE;
+  font-weight: bold;
 }
 
-/* ================= APPLE INTRO ================= */
+tbody tr:nth-child(2) td {
+  background: #e8f0ee;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(3) td {
+  background: #f3f7f6;
+  font-weight: bold;
+}
+
+.openBrowser {
+  background: #F7E7CE;
+  border: 1px solid #102C26;
+  color: #102C26;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-size: 14px;
+}    
+
+.openBrowser strong {
+  color: #102C26;
+  font-weight: bold;
+}
+    
+tbody tr:hover {
+  background: #f3f3f3;
+}  
+.quantity button:hover {
+  background: #F7E7CE;
+  color: #102C26;
+}
+
+.quantity button:active {
+  transform: scale(0.9);
+}
+.product h2,
+.product p,
+.product div {
+  color: #F7E7CE !important;
+}
 
 .apple-intro {
   position: fixed;
   inset: 0;
   background: #ffffff;
+  overflow: hidden;
   z-index: 99999;
 }
 
 .item {
   position: absolute;
   opacity: 0;
+  animation-fill-mode: forwards;
 }
-  
+
+.left1 { width: 150px; }
+.left2 { width: 155px; }
+.right1 { width: 155px; }
+.right2 { width: 175px; }
+.top1 { width: 165px; }
+.bottom1 { width: 165px; }
+.center { width: 190px; }    
+
+/* ===== ANIMATSIYALAR ===== */
+
+@keyframes slideTop {
+  from { transform: translateY(-250px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideBottom {
+  from { transform: translateY(250px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-250px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(250px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomCenter {
+  from { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* ===== 1 TA TEPADAN ===== */
+
+.top1 {
+  top: 0%;
+  left: 40%;
+  animation: slideTop 1.3s ease forwards;
+}
+
+/* ===== 1 TA PASTDAN ===== */
+
+.bottom1 {
+  bottom: 0%;
+  left: 30%;
+  animation: slideBottom 2.2s ease forwards;
+}
+
+/* ===== 2 TA CHAPDAN ===== */
+
+.left1 {
+  left: 0%;
+  top: 7%;
+  animation: slideLeft 1s ease forwards;
+}
+
+.left2 {
+  left: 0%;
+  bottom: 10%;
+  animation: slideLeft 2.5s ease forwards;
+}
+
+/* ===== 2 TA O‘NGDAN ===== */
+
+.right1 {
+  right: 0%;
+  top: 17%;
+  animation: slideRight 1.6s ease forwards;
+}
+
+.right2 {
+  right: 0%;
+  bottom: 4%;
+  animation: slideRight 1.9s ease forwards;
+}
+
+/* ===== MARKAZDAN CHIQADIGAN LOGO ===== */
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  animation: zoomCenter 1.4s ease forwards;
+}
+    
   </style>
 </head>
 <body>
