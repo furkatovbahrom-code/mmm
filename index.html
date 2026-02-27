@@ -115,6 +115,45 @@
       margin-top: 5px;
     }
 
+  .top-buttons a,
+.buy {
+  display: block;
+  text-align: center;
+
+  padding: 14px 18px;
+  border-radius: 28px;
+
+  font-weight: 500;
+  text-decoration: none;
+  color: #111;
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+  .top-buttons a:hover,
+.buy:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 15px 45px rgba(0,0,0,0.12),
+    inset 0 2px 6px rgba(255,255,255,1);
+}
+
+  .top-buttons a:active,
+.buy:active {
+  transform: scale(0.96);
+}
+
 #loader {
   position: fixed;
   inset: 0;
