@@ -9,16 +9,16 @@
   body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #102C26;  /* Krem fon */
-  color: #F7E7CE;        /* Chuqur yashil text */
+  background: #a7e6a3;  /* Krem fon */
+  color: #000;        /* Chuqur yashil text */
 }  
 
  .header {
   position: relative;
   text-align: center;
   padding: 25px;
-  background: linear-gradient(180deg, #102C26, #102C26);
-  border-bottom: 1px solid #102C26;
+  background: linear-gradient(180deg, #a7e6a3, #a7e6a3);
+  border-bottom: 1px solid #a7e6a3;
 }   
 
 .header h1 {
@@ -42,16 +42,23 @@
       padding: 15px;
     }
 
-  .product {
+.product {
   position: relative;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 22px;
   overflow: hidden;
-  background: #F7E7CE;
-  border: 1px solid #F7E7CE;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  transition: 0.3s;
+
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
 }
 
 .product:hover {
@@ -59,12 +66,15 @@
   box-shadow: 0 15px 40px rgba(212,175,55,0.3);
 }
 
-.product::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2);
-  z-index: 1;
+.product h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.product p {
+  font-size: 14px;
+  opacity: 0.9;
 }
 
 .product * {
@@ -247,8 +257,8 @@
   top: 15px;
   right: 15px;
 
-  padding: 10px 22px;
-  border-radius: 30px;
+  padding: 6px 14px;
+  border-radius: 20px;
 
   font-weight: 600;
   color: #111;
@@ -365,7 +375,7 @@ th {
     
     tbody tr:nth-child(1) td {
   background: linear-gradient(90deg,#102C26,#102C26);
-  color: #F7E7CE;
+  color: #000;
   font-weight: bold;
 }
 
@@ -400,7 +410,7 @@ tbody tr:nth-child(3) td {
 }
 
 .openBrowser strong {
-  color: #000;
+  color: #f0ede5;
   font-weight: 600;
 }
     
@@ -408,7 +418,7 @@ tbody tr:hover {
   background: #f3f3f3;
 }  
 .quantity button:hover {
-  background: #F7E7CE;
+  background: #000;
   color: #102C26;
 }
 
@@ -418,7 +428,7 @@ tbody tr:hover {
 .product h2,
 .product p,
 .product div {
-  color: #F7E7CE !important;
+  color: #fff !important;
 }
 
 /* 1-TikTok */
@@ -563,17 +573,17 @@ tbody tr:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 150px;
+  width: 130px;
   animation: zoomCenter 1.4s ease forwards;
 }
 
 #giftBtn {
   position: absolute;
   top: 15px;
-  right: 130px; /* Bonusdan chaproqda turadi */
+  right: 100px; /* Bonusdan chaproqda turadi */
 
-  padding: 10px 22px;
-  border-radius: 30px;
+  padding: 6px 14px;
+  border-radius: 20px;
 
   font-weight: 600;
   color: #111;
@@ -700,7 +710,7 @@ tbody tr:hover {
 <div id="introScreen">
 </div>
 
-<audio id="introAudio" src="Импортировано.m4a"></audio>
+<audio id="introAudio" src="VID-20260224-WA0011(1).m4a"></audio>
 
 <header class="header">
   <h1>B-EPIC Shop</h1>
@@ -844,7 +854,7 @@ TikTok B-EPIC
     <div class="gift-grid">
 
       <div class="gift-card">
-        <img src="">
+        <img src="photo_2026-02-28_15-42-44.jpg">
         <div class="gift-points">150 Бонус</div>
       </div>
 
